@@ -20,6 +20,9 @@ jirac_log() {
             "ERROR" )
                 echo "[ERROR] $log_description"
                 ;;
+            "WARNING" )
+                echo "[WARNING] $log_description"
+                ;;
             "INFO" )
                 echo "[INFO] $log_description"
                 ;;
