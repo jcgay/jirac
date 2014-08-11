@@ -17,16 +17,18 @@ usage_and_exit(){
 
 jirac_select() {
 	local PS3="${1} ? --> "
-	cd $3
-	select answer in $($2)
+	(
+    cd $3
+	select answer in $(eval "$2")
 	do
-	    if [[ -n $answer ]]; then
-		cd - 2>&1 > /dev/null
-		break
+	    if [ -n "$answer" ]; then
+            echo $answer
+            exit
 	    else
-		echo "Invalid choice"
+		    echo "Invalid choice"
 	    fi
 	done
+    )
 }
 
 jirac_apply_print_mode() {
